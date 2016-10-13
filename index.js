@@ -14,9 +14,10 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redi
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 io.on('connection', function(socket){
-  if(io.engine.clientsCount == 2){
-    io.emit('player count', 'Ready to play!')
-  };
+  socket.on('update-player-count', function(){
+    io.sockets.emit('player count', io.engine.clientsCount)
+  })
+
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
@@ -27,7 +28,14 @@ io.on('connection', function(socket){
 
   socket.on('join', function(name){
     players[socket.id] = name;
-    console.log(name);
+    io.sockets.emit('update-name', name)
+  })
+
+
+
+  socket.on('send', function(msg){
+    io.sockets.emit('chat',players[socket.id], msg);
+
   })
 });
 
