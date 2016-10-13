@@ -12,4 +12,5 @@ $(document).ready(function(){
   socket.on('player count', function(msg){
     $('#loadPlayer').text(msg)
   })
+  
 })
