@@ -11,6 +11,20 @@ $(document).ready(function(){
 
   socket.on('player count', function(msg){
     $('#loadPlayer').text(msg)
+    $('.playerStatus').show()
   })
-  
+
+  $('.player1').on('click', function(){
+    var name = $('#name').val();
+    if (name != ""){
+      socket.emit("join", name);
+    }
+  })
+
 })
+
+var getName = function(){
+  var name = prompt("What's your name?")
+  $('.player1').text(name)
+  return name
+}

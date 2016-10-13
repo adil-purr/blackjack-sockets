@@ -25,15 +25,40 @@
   <body>
     <div class='landing'>
       <h1>Lets play blackjack!</h1>
-      <p id='loadPlayer'>Waiting for another player...</p>
-      <div class='row'>
-        <div class='col-md-6'>
-          a
-        </div>
-        <div class='col-md-6'>
-          a
+      <div class='playerStatus'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <button class='btn btn-default player1'>Player 1</button>
+            <input type="text" id='name' />
+          </div>
+          <div class='col-md-6'>
+            <button class='btn btn-default player2'>Player 2</button>
+          </div>
         </div>
       </div>
+      <div class='gameContainer'>
+        <div class='row'>
+          <div class='col-md-4'>
+            <div class='dealerCards'>
+
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <div class='playerOne'>
+
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <div class='playerTwo'>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class='chatBox'>
+      <ul id="messages"></ul>
     </div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
