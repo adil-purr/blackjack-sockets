@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
@@ -6,13 +7,18 @@ app.get('/', function(req, res){
   res.sendFile( __dirname+'/index.html');
 });
 
+app.use(express.static(__dirname))
+
 io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+  if(io.engine.clientsCount == 2){
+    io.emit('player count', 'Ready to play!')
+  };
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
   });
 });
 
