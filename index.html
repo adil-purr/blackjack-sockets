@@ -11,17 +11,21 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      .landing {    border: 3px solid black; border-radius: 12px; padding: 70px;}
     </style>
   </head>
   <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script src='./application.js'></script>
   <script>
-  
+
   </script>
 
   <body>
-    <ul id="messages"></ul>
+    <div class='landing'>
+      <h1>Lets play blackjack!</h1>
+      <p id='loadPlayer'>Waiting for another player...</p>
+    </div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>

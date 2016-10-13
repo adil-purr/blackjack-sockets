@@ -10,6 +10,6 @@ $(document).ready(function(){
   });
 
   socket.on('player count', function(msg){
-    console.log(msg)
+    $('#loadPlayer').text(msg)
   })
 })
